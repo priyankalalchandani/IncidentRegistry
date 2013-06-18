@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<IncidentRegistry.Models.Incident>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Incident List";
 }
 
 <h2>Index</h2>
@@ -9,55 +9,43 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table style="width:80%">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.IncidentID) 
+           
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date) 
+           
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IncidentType)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Department)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActionTaken)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
-        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.IncidentID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IncidentType)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActionTaken)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
-        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IncidentID }) |
             @Html.ActionLink("Details", "Details", new { id=item.IncidentID }) |
