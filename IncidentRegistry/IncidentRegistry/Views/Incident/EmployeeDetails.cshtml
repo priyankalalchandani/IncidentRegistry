@@ -4,50 +4,51 @@
     ViewBag.Title = "Employee Details";
 }
 
+<link rel="stylesheet" type="text/css" href="~/details.css" />
 <h2>EmployeeDetails</h2>
 
 <fieldset>
     <legend>Employee</legend>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.EmployeeID)
     </div>
-    <div class="display-field">
+    <div class="deailsfield">
         @Html.DisplayFor(model => model.EmployeeID)
     </div>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.EmployeeName)
     </div>
-    <div class="display-field">
+    <div class="detailsfield">
         @Html.DisplayFor(model => model.EmployeeName)
     </div>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.EmployeePhone)
     </div>
-    <div class="display-field">
+    <div class="detailsfield">
         @Html.DisplayFor(model => model.EmployeePhone)
     </div>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.EmployeeEmail)
     </div>
-    <div class="display-field">
+    <div class="detailsfield">
         @Html.DisplayFor(model => model.EmployeeEmail)
     </div>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.Designation)
     </div>
-    <div class="display-field">
+    <div class="detailsfield">
         @Html.DisplayFor(model => model.Designation)
     </div>
 
-    <div class="display-label">
+    <div class="detailslabel">
          @Html.DisplayNameFor(model => model.Depatment)
     </div>
-    <div class="display-field">
+    <div class="detailsfield">
         @Html.DisplayFor(model => model.Depatment)
     </div>
 </fieldset>
