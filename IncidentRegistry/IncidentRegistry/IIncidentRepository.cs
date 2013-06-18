@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using IncidentRegistry.Models;
 
 namespace IncidentRegistry
 {
-    public class IIncidentRepository:IDisposable
+    public interface IIncidentRepository:IDisposable
     {
         IEnumerable<Incident> GetIncidents();
         Incident GetIncidentByID(int incidentId);
         void InsertIncident(Incident incident);
+        void Save();
     }
 }
