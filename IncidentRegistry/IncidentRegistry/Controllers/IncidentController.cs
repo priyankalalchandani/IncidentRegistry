@@ -12,7 +12,7 @@ namespace IncidentRegistry.Controllers
     public class IncidentController : Controller
     {
         private IncidentDBContext db = new IncidentDBContext();
-
+        int i = 100;
         //
         // GET: /Incident/
 
@@ -35,6 +35,17 @@ namespace IncidentRegistry.Controllers
             return View(incident);
         }
 
+        public ActionResult EmployeeDetails(int id = 0)
+        {
+            Employee emp = db.Employees.Find(id);
+            if (emp == null)
+            {
+                return HttpNotFound();
+            }
+            return View(emp);
+        }
+
+
         //
         // GET: /Incident/Create
 
@@ -52,6 +63,7 @@ namespace IncidentRegistry.Controllers
         {
             if (ModelState.IsValid)
             {
+                incident.IncidentID = i++;
                 db.incident.Add(incident);
                 db.SaveChanges();
                 return RedirectToAction("Index");
