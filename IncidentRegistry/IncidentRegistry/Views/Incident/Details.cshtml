@@ -1,0 +1,64 @@
+﻿@model IncidentRegistry.Models.Incident
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Incident</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IncidentType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IncidentType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IncidentLocation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IncidentLocation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ActionTaken)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ActionTaken)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.EmployeeName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IncidentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
