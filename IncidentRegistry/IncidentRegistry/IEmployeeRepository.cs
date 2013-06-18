@@ -7,12 +7,9 @@ using IncidentRegistry.Models;
 
 namespace IncidentRegistry
 {
-    public interface IIncidentRepository:IDisposable
+    interface IEmployeeRepository:IDisposable
     {
-        IEnumerable<Incident> GetIncidents();
-        Incident GetIncidentByID(int incidentId);
         Employee GetEmployeeByID(int employeeId);
-        void InsertIncident(Incident incident);
-        void Save();
+        IEnumerable<Employee> GetEmployees();
     }
 }

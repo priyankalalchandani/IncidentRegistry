@@ -3,43 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using IncidentRegistry.Models;
-
 namespace IncidentRegistry
 {
-    public class IncidentRepository:IIncidentRepository,IDisposable
+    public class EmployeeRepository:IEmployeeRepository,IDisposable
     {
-        private IncidentDBContext context;
-
-        public IncidentRepository(IncidentDBContext context)
+        IncidentDBContext context;
+        public EmployeeRepository(IncidentDBContext context)
         {
             this.context = context;
         }
 
-        public IEnumerable<Incident> GetIncidents()
+        public IEnumerable<Employee> GetEmployees()
         {
-            return context.incident.ToList();
-        }
-
-        public Incident GetIncidentByID(int incidentID)
-        {
-            return context.incident.Find(incidentID);
-        }
-
-        public void InsertIncident(Incident incident)
-        {
-            context.incident.Add(incident);
+            return context.Employees.ToList();
         }
 
         public Employee GetEmployeeByID(int employeeID)
         {
             return context.Employees.Find(employeeID);
         }
-
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
