@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IncidentRegistry.Models;
-
+using System.IO;
 namespace IncidentRegistry.Controllers
 {
     public class IncidentController : Controller
@@ -80,8 +80,19 @@ namespace IncidentRegistry.Controllers
         [HttpPost]
         public ActionResult Create(Incident incident)
         {
+            string filename = "";
+            foreach (string upload in Request.Files)
+            {
+                filename = Path.GetFileName(Request.Files[upload].FileName);
+                string path = Server.MapPath("~/");
+                Request.Files[upload].SaveAs(Path.Combine(path, filename));
+                
+            }
+
+                
             if (ModelState.IsValid)
             {
+                incident.UploadFile = filename;
                 incidentRepository.InsertIncident(incident);
                 incidentRepository.Save();
                 return RedirectToAction("Index");
