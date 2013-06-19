@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table style="width:80%">
+<table style="width:100%">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.IncidentID) 
@@ -25,6 +25,10 @@
 
         <th>
             @Html.DisplayNameFor(model => model.Description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UploadFile)
         </th>
         
         <th></th>
@@ -45,11 +49,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+
+        <td>
+            @if(item.UploadFile!=null)
+            {
+                @Html.DisplayFor(modelItem => item.UploadFile) 
+                @Html.ActionLink("Download", "Download", new { filename=item.UploadFile })
+            }
+        </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IncidentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IncidentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IncidentID })
+            @Html.ActionLink("Details", "Details", new { id=item.IncidentID }) 
+           
         </td>
     </tr>
 }
