@@ -23,8 +23,14 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.IncidentType)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IncidentType)
+        <div class="editor-field" style="padding:10px;">
+            @Html.DropDownList("IncidentType",new SelectList(new List<Object>{
+                                                            new { value="Death", text="Death"},
+                                                            new { value="Serious Personal Injury", text="Serious Personal Injury"},
+                                                            new { value="Incapacity", text="Incapacity"},
+                                                            new { value="Dangerous Occurence", text="Dangerous Occurence"},
+                                                            new { value="Other", text="Other"}
+                                                            },"value","text",2))
             @Html.ValidationMessageFor(model => model.IncidentType)
         </div>
 
@@ -32,7 +38,12 @@
             @Html.LabelFor(model => model.Department)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Department)
+           @Html.DropDownList("Department",new SelectList(new List<Object>{
+                                                            new { value="Information Technology", text="Information Technology"},
+                                                            new { value="Sales", text="Sales"},
+                                                            new { value="Finanace", text="Finance"},
+                                                            new { value="Excise", text="Excise"}
+                                                            },"value","text",2))
             @Html.ValidationMessageFor(model => model.Department)
         </div>
 
