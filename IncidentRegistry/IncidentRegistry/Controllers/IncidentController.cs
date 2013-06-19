@@ -102,6 +102,14 @@ namespace IncidentRegistry.Controllers
             return View(incident);
         }
 
+        public ActionResult Download(String filename)
+        {
+            if(filename!=null)
+                return File("~/" + filename, System.Net.Mime.MediaTypeNames.Application.Octet,filename);
+
+            return View("Index");
+        }
+
         //
         // GET: /Incident/Edit/5
 
