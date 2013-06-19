@@ -5,6 +5,7 @@
 }
 
 <h2>Report Incident</h2>
+<br />
 
 @using (Html.BeginForm("Create", "Incident", FormMethod.Post, new {enctype="multipart/form-data"})) {
     @Html.ValidationSummary(true)
@@ -13,7 +14,8 @@
         <legend>Incident</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
+            @Html.Label("Date & Time of Incidence") (Format for Date:yyyy/mm/dd and Time:hh:mm:ss AM/PM) 
+            
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Date)
