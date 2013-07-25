@@ -1,0 +1,5 @@
+C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\obj\Debug\IncidentDomain.csprojResolveAssemblyReference.cache
+C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\bin\Debug\IncidentDomain.dll
+C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\bin\Debug\IncidentDomain.pdb
+C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\obj\Debug\IncidentDomain.dll
+C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\obj\Debug\IncidentDomain.pdb
