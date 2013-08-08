@@ -1,4 +1,4 @@
-﻿@model IncidentRegistry.Models.Incident
+﻿@model IncidentDomain.Entities.Incident
 
 @{
     ViewBag.Title = "Details";
@@ -56,14 +56,6 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ActionTaken)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Employee.EmployeeName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Employee.EmployeeName)
-        @Html.ActionLink("View Employee Details", "EmployeeDetails", new { id = Model.EmployeeID });
     </div>
 </fieldset>
 <p>
