@@ -6,27 +6,21 @@ using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using IncidentDomain.Entities;
 
 namespace IncidentInfrastructure.Repositories
 {
-    public class IncidentRepository<TEntity> : IRepository<TEntity> where TEntity: class
+    public class IncidentDBContext : DbContext
     {
-        protected DbContext Context { get; set; }
-        protected DbSet<TEntity> DbSet { get; set; }
+        public DbSet<IncidentDomain.Entities.Incident> Incidents { get; set; }
+    }
 
-        public IncidentRepository()
+    public class IncidentRepository : AbstractRepository<Incident> , IRepository<Incident>
+    {
+        public IncidentRepository(IncidentDBContext context)
+            : base(context)
         {
-            this.DbSet = Context.Set<TEntity>();
-        }
-
-        public TEntity get(int id)
-        {
-            return (TEntity)DbSet.Find(id);
-        }
-
-        public IEnumerable<TEntity> getAll()
-        {
-
+           
         }
     }
 }

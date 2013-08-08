@@ -4,31 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IncidentDomain.Entities;
+using IncidentInfrastructure.Repositories;
 
 namespace IncidentDomain.Services
 {
-    public class IncidentService<T>:IService<T>
+    public class IncidentService:AbstractService,IIncidentService
     {
-        private IRepository<T> repo;
-
-        public IncidentService(IRepository<T> repo)
+        public IncidentService(IncidentRepository repo)
+            
         {
-            this.repo = repo;
-        }
-
-        public T get(int id)
-        {
-            return repo.get(id);
-        }
-
-        public IEnumerable<T> getAll()
-        {
-            return repo.getAll();
-        }
-
-        public T insert(T data)
-        {
-            return repo.insert(data);
+            repo = new IncidentRepository(new IncidentDBContext());
         }
     }
 }
