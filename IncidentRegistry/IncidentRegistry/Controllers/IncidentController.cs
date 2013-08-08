@@ -5,40 +5,32 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using IncidentRegistry.Models;
 using System.IO;
+using IncidentDomain.Services;
+using IncidentInfrastructure.Repositories;
+
 namespace IncidentRegistry.Controllers
 {
     public class IncidentController : Controller
     {
         //private IncidentDBContext db = new IncidentDBContext();
-        private IIncidentRepository incidentRepository;
-        private IEmployeeRepository employeeRepository;
+        private IIncidentService incidentService;
+        private IncidentRepository incidentRepo;
 
         int i = 100;
 
         public IncidentController()
         {
-            this.incidentRepository = new IncidentRepository(new IncidentDBContext());
-            this.employeeRepository = new EmployeeRepository(new IncidentDBContext());
+            this.incidentService = new IncidentService(incidentRepo);
         }
 
-        public IncidentController(IIncidentRepository incidentRepository)
-        {
-            this.incidentRepository = incidentRepository;
-            
-        }
-
-        
         //
         // GET: /Incident/
 
         public ActionResult Index()
         {
-            /*var incident = db.incident.Include(i => i.Employee);
-            return View(incident.ToList());*/
 
-            return View(incidentRepository.GetIncidents());
+            return View(incidentService.GetAllIncidents());
         }
 
         //
@@ -53,16 +45,15 @@ namespace IncidentRegistry.Controllers
             }
             return View(incident);*/
 
-            Incident incident = incidentRepository.GetIncidentByID(id);
-            return View(incident);
+            return View(incidentService.GetIncidentById(id));
         }
 
-        public ActionResult EmployeeDetails(int id = 0)
+        /*public ActionResult EmployeeDetails(int id = 0)
         {
             Employee emp = incidentRepository.GetEmployeeByID(id);
             return View(emp);
           
-        }
+        }*/
 
 
         //
@@ -70,7 +61,7 @@ namespace IncidentRegistry.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID");
+            //ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID");
             return View();
         }
 
@@ -78,7 +69,7 @@ namespace IncidentRegistry.Controllers
         // POST: /Incident/Create
 
         [HttpPost]
-        public ActionResult Create(Incident incident)
+        public ActionResult Create(IncidentDomain.Entities.Incident incident)
         {
             string filename = "";
             foreach (string upload in Request.Files)
@@ -88,18 +79,15 @@ namespace IncidentRegistry.Controllers
                 Request.Files[upload].SaveAs(Path.Combine(path, filename));
                 
             }
-
                 
             if (ModelState.IsValid)
             {
-                incident.UploadFile = filename;
-                incidentRepository.InsertIncident(incident);
-                incidentRepository.Save();
+                incidentService.AddIncident(incident).UploadFile=filename;
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID", incident.EmployeeID);
-            return View(incident);
+            //ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID", incident.EmployeeID);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Download(String filename)
@@ -167,7 +155,7 @@ namespace IncidentRegistry.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            incidentRepository.Dispose();
+            //incidentRepository.Dispose();
             base.Dispose(disposing);
         }
     }
