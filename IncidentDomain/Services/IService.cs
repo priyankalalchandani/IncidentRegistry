@@ -8,9 +8,9 @@ namespace IncidentDomain.Services
 {
     public interface IService<T>
     {
-        T get(int id);
-        IEnumerable<T> getAll();
-
-        T insert(T data);
+        T GetIncidentById(int id);
+        IEnumerable<T> GetAllIncidents();
+        T AddIncident(T model);
+        T Create();
     }
 }

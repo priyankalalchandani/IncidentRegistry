@@ -8,9 +8,8 @@ namespace IncidentDomain.Repository
 {
     public interface IRepository<T>
     {
-        T get(int id);
-        IEnumerable<T> getAll();
-
-        T insert(T data);
+        T Get(int id);
+        IEnumerable<T> GetAll();
+        T Insert(T data);
     }
 }
