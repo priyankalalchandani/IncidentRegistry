@@ -3,3 +3,8 @@ C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomai
 C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\bin\Debug\IncidentDomain.pdb
 C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\obj\Debug\IncidentDomain.dll
 C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentDomain\IncidentDomain\obj\Debug\IncidentDomain.pdb
+F:\projects\IncidentRegistry\IncidentDomain\bin\Debug\IncidentDomain.dll
+F:\projects\IncidentRegistry\IncidentDomain\bin\Debug\IncidentDomain.pdb
+F:\projects\IncidentRegistry\IncidentDomain\obj\Debug\IncidentDomain.csprojResolveAssemblyReference.cache
+F:\projects\IncidentRegistry\IncidentDomain\obj\Debug\IncidentDomain.dll
+F:\projects\IncidentRegistry\IncidentDomain\obj\Debug\IncidentDomain.pdb

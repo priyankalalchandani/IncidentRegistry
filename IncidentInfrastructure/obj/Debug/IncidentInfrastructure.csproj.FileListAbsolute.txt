@@ -1,1 +1,2 @@
 C:\Users\anit\Documents\Visual Studio 2012\Projects\IncidentInfrastructure\IncidentInfrastructure\obj\Debug\IncidentInfrastructure.csprojResolveAssemblyReference.cache
+F:\projects\IncidentRegistry\IncidentInfrastructure\obj\Debug\IncidentInfrastructure.csprojResolveAssemblyReference.cache
