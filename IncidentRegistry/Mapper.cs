@@ -9,24 +9,26 @@ using Microsoft.Practices.Unity;
 using IncidentDomain.Services;
 using IncidentDomain.Repository;
 using IncidentInfrastructure.Repositories;
+using IncidentDomain.Entities;
 
 namespace IncidentRegistry
 {
     public class Mapper
     {
-        public static IUnityContainer Container;
-
         public static void Initialize()
         {
-            Container = MapServiceAndRepo();
+
+            var container = MapServiceAndRepo();
+
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
 
         public static IUnityContainer MapServiceAndRepo()
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IRepository<IncidentDomain.Entities.Incident>, IncidentRepository>();
-            container.RegisterType<IService<IncidentDomain.Entities.Incident>, IncidentService>();
+            container.RegisterType<IIncidentRepository, IncidentRepository>();
+            container.RegisterType<IIncidentService, IncidentService>();
             return container;
         }
     }
