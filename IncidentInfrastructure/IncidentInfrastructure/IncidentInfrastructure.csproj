@@ -33,6 +33,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\..\..\..\..\projects\IncidentRegistry\IncidentRegistry\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="IncidentDomain">
+      <HintPath>..\..\IncidentDomain\IncidentDomain\bin\Debug\IncidentDomain.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -45,20 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AbstractRepository.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
+    <Compile Include="Services\IncidentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IncidentDomain\IncidentDomain.csproj">
-      <Project>{93de3517-8c5a-421d-a40c-b599af16bea3}</Project>
-      <Name>IncidentDomain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

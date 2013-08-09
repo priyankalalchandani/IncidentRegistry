@@ -9,7 +9,7 @@ namespace IncidentDomain.Entities
     public class Incident
     {
         public int IncidentID { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string IncidentType { get; set; }
         public string Department { get; set; }
 

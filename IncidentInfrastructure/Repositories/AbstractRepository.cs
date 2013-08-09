@@ -14,7 +14,7 @@ namespace IncidentInfrastructure.Repositories
         protected DbContext Context { get; set; }
         public DbSet<TEntity> DbSet { get; set; }
 
-        //protected virtual IQueryable<TEntity> QuerySet { get { return DbSet; } }
+        protected virtual IQueryable<TEntity> QuerySet { get { return DbSet; } }
 
         public AbstractRepository(DbContext Context)
         {
@@ -37,6 +37,23 @@ namespace IncidentInfrastructure.Repositories
             DbSet.Add(model);
             Context.SaveChanges();
             return model;
+        }
+
+        public TEntity Delete(int id)
+        {
+            TEntity data = DbSet.Find(id);
+            DbSet.Remove(data);
+            Context.SaveChanges();
+            return data;
+        }
+
+        public TEntity Update(TEntity data)
+        {
+            TEntity entity = DbSet.Find(data.IncidentID);
+            
+            Context.Entry(entity).CurrentValues.SetValues(data);
+            Context.SaveChanges();
+            return data;
         }
     }
 }
