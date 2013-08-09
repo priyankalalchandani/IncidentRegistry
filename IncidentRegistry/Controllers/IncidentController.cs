@@ -83,11 +83,8 @@ namespace IncidentRegistry.Controllers
         }
 
        
-        [HttpPost]
         public ActionResult Delete(int id = 0)
         {
-           
-
             return View(incidentService.GetIncidentById(id));
         }
 
