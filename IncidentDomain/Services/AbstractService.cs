@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IncidentDomain.Repository;
-using IncidentInfrastructure.Repositories;
 
 namespace IncidentDomain.Services
 {
     public class AbstractService : IService<IncidentDomain.Entities.Incident>
     {
-        private IncidentRepository repo;
+        private IRepository repo;
 
         public AbstractService()
         {
