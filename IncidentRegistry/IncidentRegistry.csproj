@@ -347,7 +347,6 @@
     <Content Include="Views\Incident\Delete.cshtml" />
     <Content Include="Views\Incident\Details.cshtml" />
     <Content Include="Views\Incident\Edit.cshtml" />
-    <Content Include="Views\Incident\EmployeeDetails.cshtml" />
     <Content Include="Views\Incident\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
