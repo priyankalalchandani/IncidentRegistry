@@ -13,19 +13,13 @@ namespace IncidentRegistry.Controllers
 {
     public class IncidentController : Controller
     {
-        //private IncidentDBContext db = new IncidentDBContext();
         private IIncidentService incidentService;
-        private IncidentRepository incidentRepo;
 
-        int i = 100;
 
-        public IncidentController()
+        public IncidentController(IIncidentService incidentService)
         {
-            this.incidentService = new IncidentService(incidentRepo);
+            this.incidentService = incidentService;
         }
-
-        //
-        // GET: /Incident/
 
         public ActionResult Index()
         {
@@ -33,43 +27,19 @@ namespace IncidentRegistry.Controllers
             return View(incidentService.GetAllIncidents());
         }
 
-        //
-        // GET: /Incident/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            /*Incident incident = db.incident.Find(id);
-            if (incident == null)
-            {
-                return HttpNotFound();
-            }
-            return View(incident);*/
-
             return View(incidentService.GetIncidentById(id));
         }
 
-        /*public ActionResult EmployeeDetails(int id = 0)
-        {
-            Employee emp = incidentRepository.GetEmployeeByID(id);
-            return View(emp);
-          
-        }*/
-
-
-        //
-        // GET: /Incident/Create
-
         public ActionResult Create()
         {
-            //ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID");
             return View();
         }
 
-        //
-        // POST: /Incident/Create
-
         [HttpPost]
-        public ActionResult Create(IncidentDomain.Entities.Incident incident)
+        public ActionResult CreateIncident(IncidentDomain.Entities.Incident incident)
         {
             string filename = "";
             foreach (string upload in Request.Files)
@@ -82,11 +52,10 @@ namespace IncidentRegistry.Controllers
                 
             if (ModelState.IsValid)
             {
-                incidentService.AddIncident(incident).UploadFile=filename;
+                incident.UploadFile = filename;
+                incidentService.AddIncident(incident);
                 return RedirectToAction("Index");
             }
-
-            //ViewBag.EmployeeID = new SelectList(employeeRepository.GetEmployees(), "EmployeeID", "EmployeeID", incident.EmployeeID);
             return RedirectToAction("Index");
         }
 
@@ -98,64 +67,42 @@ namespace IncidentRegistry.Controllers
             return View("Index");
         }
 
-        //
-        // GET: /Incident/Edit/5
-
-        /*public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0)
         {
-            Incident incident = db.incident.Find(id);
-            if (incident == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "EmployeeName", incident.EmployeeID);
-            return View(incident);
-        }*/
+            return View(incidentService.GetIncidentById(id));
+        }
 
-        //
-        // POST: /Incident/Edit/5
-
-        /*[HttpPost]
-        public ActionResult Edit(Incident incident)
+        [HttpPost,ActionName("Edit")]
+        public ActionResult EditData(IncidentDomain.Entities.Incident incident)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(incident).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "EmployeeName", incident.EmployeeID);
-            return View(incident);
-        }*/
+            
+                incidentService.UpdateIncident(incident);
 
-        //
-        // GET: /Incident/Delete/5
 
-        /*public ActionResult Delete(int id = 0)
+            return RedirectToAction("Index");
+        }
+
+       
+        [HttpPost]
+        public ActionResult Delete(int id = 0)
         {
-            Incident incident = db.incident.Find(id);
-            if (incident == null)
-            {
-                return HttpNotFound();
-            }
-            return View(incident);
-        }*/
+           
 
-        //
-        // POST: /Incident/Delete/5
+            return View(incidentService.GetIncidentById(id));
+        }
 
-        /*[HttpPost, ActionName("Delete")]
+        
+
+        [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Incident incident = db.incident.Find(id);
-            db.incident.Remove(incident);
-            db.SaveChanges();
+            incidentService.DeleteIncident(id);
             return RedirectToAction("Index");
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {
-            //incidentRepository.Dispose();
+            
             base.Dispose(disposing);
         }
     }
