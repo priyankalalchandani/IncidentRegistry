@@ -57,9 +57,18 @@
                 @Html.ActionLink("Download", "Download", new { filename=item.UploadFile })
             }
         </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IncidentID }) 
+           
+        </td>
        
         <td>
             @Html.ActionLink("Details", "Details", new { id=item.IncidentID }) 
+           
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.IncidentID }) 
            
         </td>
     </tr>

@@ -7,7 +7,7 @@
 <h2>Report Incident</h2>
 <br />
 
-@using (Html.BeginForm("Create", "Incident", FormMethod.Post, new {enctype="multipart/form-data"})) {
+@using (Html.BeginForm("CreateIncident", "Incident", FormMethod.Post, new {enctype="multipart/form-data"})) {
     @Html.ValidationSummary(true)
 
     <fieldset>
