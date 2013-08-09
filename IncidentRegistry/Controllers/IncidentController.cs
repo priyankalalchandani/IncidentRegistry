@@ -41,18 +41,9 @@ namespace IncidentRegistry.Controllers
         [HttpPost]
         public ActionResult CreateIncident(IncidentDomain.Entities.Incident incident)
         {
-            string filename = "";
-            foreach (string upload in Request.Files)
-            {
-                filename = Path.GetFileName(Request.Files[upload].FileName);
-                string path = Server.MapPath("~/");
-                Request.Files[upload].SaveAs(Path.Combine(path, filename));
-                
-            }
-                
+            incident.UploadFile = incidentService.UploadFile();
             if (ModelState.IsValid)
             {
-                incident.UploadFile = filename;
                 incidentService.AddIncident(incident);
                 return RedirectToAction("Index");
             }
