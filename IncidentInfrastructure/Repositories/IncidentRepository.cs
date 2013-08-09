@@ -15,7 +15,7 @@ namespace IncidentInfrastructure.Repositories
         public DbSet<IncidentDomain.Entities.Incident> Incidents { get; set; }
     }
 
-    public class IncidentRepository : AbstractRepository<Incident> , IRepository<Incident>
+    public class IncidentRepository : AbstractRepository<Incident> ,IIncidentRepository
     {
         public IncidentRepository(IncidentDBContext context)
             : base(context)
