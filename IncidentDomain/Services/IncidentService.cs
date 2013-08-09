@@ -5,16 +5,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IncidentDomain.Entities;
-using IncidentInfrastructure.Repositories;
+using System.Web;
+using System.IO;
 
 namespace IncidentDomain.Services
 {
-    public class IncidentService:AbstractService,IIncidentService
+    public class IncidentService:AbstractService<IncidentDomain.Entities.Incident>,IIncidentService
     {
-        public IncidentService(IncidentRepository repo)
-            
+        private IIncidentRepository Repository;
+        public IncidentService(IIncidentRepository repo)
+            :base(repo)
         {
-            repo = new IncidentRepository(new IncidentDBContext());
+            this.Repository = repo;
+        }
+
+        public string UploadFile()
+        {
+            string filename = "";
+            foreach (string upload in HttpContext.Current.Request.Files)
+            {
+                filename = Path.GetFileName(HttpContext.Current.Request.Files[upload].FileName);
+                string path = HttpContext.Current.Server.MapPath("~/");
+                HttpContext.Current.Request.Files[upload].SaveAs(Path.Combine(path, filename));
+                
+            }
+            return filename;
         }
     }
 }

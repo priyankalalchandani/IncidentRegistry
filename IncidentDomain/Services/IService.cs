@@ -12,5 +12,7 @@ namespace IncidentDomain.Services
         IEnumerable<T> GetAllIncidents();
         T AddIncident(T model);
         T Create();
+        int DeleteIncident(int id);
+        T UpdateIncident(T data);
     }
 }

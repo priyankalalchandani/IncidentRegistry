@@ -7,34 +7,45 @@ using IncidentDomain.Repository;
 
 namespace IncidentDomain.Services
 {
-    public class AbstractService : IService<IncidentDomain.Entities.Incident>
+    public class AbstractService<T> : IService<T> where T: new()
     {
-        private IRepository repo;
+        private IRepository<T> repo;
 
-        public AbstractService()
+        public AbstractService(IRepository<T> repo)
         {
-            this.repo = new IncidentRepository(new IncidentDBContext());
+            this.repo = repo;
         }
 
-        public IncidentDomain.Entities.Incident GetIncidentById(int id)
+        public T GetIncidentById(int id)
         {
             return repo.Get(id);
         }
 
-        public IEnumerable<IncidentDomain.Entities.Incident> GetAllIncidents()
+        public IEnumerable<T> GetAllIncidents()
         {
             return repo.GetAll();
         }
 
-        public IncidentDomain.Entities.Incident AddIncident(IncidentDomain.Entities.Incident model)
+        public T AddIncident(T model)
         {
             repo.Insert(model);
             return model;
         }
 
-        public IncidentDomain.Entities.Incident Create()
+        public T Create()
         {
-            return new IncidentDomain.Entities.Incident();
+            return new T();
+        }
+
+        public int DeleteIncident(int id)
+        {
+            repo.Delete(id);
+            return id;
+        }
+        public T UpdateIncident(T data)
+        {
+            repo.Update(data);
+            return data;
         }
     }
 }

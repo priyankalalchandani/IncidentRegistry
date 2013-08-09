@@ -71,14 +71,21 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebActivatorEx">
-      <HintPath>..\packages\WebActivatorEx.2.0.2\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="Unity.Mvc3">
+      <HintPath>C:\Users\Priyanka\Downloads\Unity.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\projects\IncidentRegistry\IncidentRegistry\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Incident.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IIncidentRepository.cs" />
     <Compile Include="Repository\IRepositroy.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Services\IIncidentService.cs" />
@@ -90,10 +97,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IncidentInfrastructure\IncidentInfrastructure.csproj">
-      <Project>{428be48c-9cb7-4a61-9523-b5f40403ecee}</Project>
-      <Name>IncidentInfrastructure</Name>
-    </ProjectReference>
+    <Content Include="bin\Debug\IncidentDomain.dll" />
+    <Content Include="bin\Debug\IncidentDomain.pdb" />
+    <Content Include="IncidentDomain.sln" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
