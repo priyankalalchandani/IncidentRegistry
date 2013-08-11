@@ -1,77 +1,97 @@
 ﻿@model IEnumerable<IncidentDomain.Entities.Incident>
 
-@{
-    ViewBag.Title = "Incident List";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table style="width:100%">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentID) 
-           
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date) 
-           
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IncidentType)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.UploadFile)
-        </th>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Incident Reporting</title>
         
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentType)
-        </td>
+        <link href="~/bootstrap.css" rel="stylesheet" media="screen">
+        <meta name="viewport" content="width=device-width" />
         
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+    </head>
+    <body>
+        @{
+            ViewBag.Title = "Incident List";
+        }
 
-        <td>
-            @if(item.UploadFile!=null)
-            {
-                @Html.DisplayFor(modelItem => item.UploadFile) 
-                @Html.ActionLink("Download", "Download", new { filename=item.UploadFile })
-            }
-        </td>
+        <div class="container">
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IncidentID }) 
+        <br /><br />
+    
+        @Html.ActionLink("Register Incident", "Create", "Incident", null, new { @class = "btn btn-large btn-primary pull-right" })
+
+        <h2>Incidents Reported</h2>
+
+        <br />
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IncidentID) 
            
-        </td>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date) 
+           
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IncidentType)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+
+                <th>
+                    File Uploaded
+                </th>
+
+                <th colspan="2">
+                    Actions
+                </th>
+            </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IncidentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IncidentType)
+                    </td>
+        
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                    <td>
+                        @if(item.UploadFile!=null)
+                        {
+                            @Html.ActionLink(item.UploadFile, "Download", new { filename = item.UploadFile })
+                        }
+                    </td>
+
+                    <td>
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IncidentID }, new { @class = "btn" }) 
+                            @Html.ActionLink("Delete", "Delete", new { id=item.IncidentID }, new { @class = "btn" })
+                        </div>
+            
+                    </td>
        
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.IncidentID }) 
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.IncidentID }, new { @class = " btn btn-info" }) 
            
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.IncidentID }) 
-           
-        </td>
-    </tr>
-}
+                    </td>
+                </tr>
+               }
 
-</table>
+            </table>
+        </div>
+    </body>
+</html>
+
