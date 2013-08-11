@@ -73,7 +73,6 @@ namespace IncidentRegistry.Controllers
             return RedirectToAction("Index");
         }
 
-       
         public ActionResult Delete(int id = 0)
         {
             return View(incidentService.GetIncidentById(id));
