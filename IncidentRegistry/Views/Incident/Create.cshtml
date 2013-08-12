@@ -1,96 +1,119 @@
 ﻿@model IncidentDomain.Entities.Incident
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Incident Reporting</title>
+        
+        <link href="~/bootstrap.css" rel="stylesheet" media="screen">
+        <meta name="viewport" content="width=device-width" />
+        
+    </head>
+    <body>
 @{
     ViewBag.Title = "Report Incident";
 }
 
-<h2>Report Incident</h2>
 <br />
 
+<div class="container">
+    
 @using (Html.BeginForm("CreateIncident", "Incident", FormMethod.Post, new {enctype="multipart/form-data"})) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Incident</legend>
-
-        <div class="editor-label">
-            @Html.Label("Date & Time of Incidence") (Format for Date:yyyy/mm/dd and Time:hh:mm:ss AM/PM) 
+    <fieldset class="fieldset">
+        <legend class="legend">Report Incident</legend>
+        <div class="row">
+            <div class="span5">
+                @Html.Label("Date & Time of Incidence") (Format for Date:yyyy/mm/dd and Time:hh:mm:ss AM/PM) 
             
+            </div>
+            <div class="span7">
+                @Html.EditorFor(model => model.Date)
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IncidentType)
-        </div>
-        <div class="editor-field" style="padding:10px;">
-            @Html.DropDownList("IncidentType",new SelectList(new List<Object>{
+    
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.IncidentType)
+            </div>
+            <div class="span7">
+                @Html.DropDownList("IncidentType",new SelectList(new List<Object>{
                                                             new { value="Death", text="Death"},
                                                             new { value="Serious Personal Injury", text="Serious Personal Injury"},
                                                             new { value="Incapacity", text="Incapacity"},
                                                             new { value="Dangerous Occurence", text="Dangerous Occurence"},
                                                             new { value="Other", text="Other"}
                                                             },"value","text",2))
-            @Html.ValidationMessageFor(model => model.IncidentType)
+                @Html.ValidationMessageFor(model => model.IncidentType)
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Department)
-        </div>
-        <div class="editor-field">
-           @Html.DropDownList("Department",new SelectList(new List<Object>{
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.Department)
+            </div>
+            <div class="span7">
+                @Html.DropDownList("Department",new SelectList(new List<Object>{
                                                             new { value="Information Technology", text="Information Technology"},
                                                             new { value="Sales", text="Sales"},
                                                             new { value="Finanace", text="Finance"},
                                                             new { value="Excise", text="Excise"}
                                                             },"value","text",2))
-            @Html.ValidationMessageFor(model => model.Department)
+                @Html.ValidationMessageFor(model => model.Department)
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="span7">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UploadFile)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.UploadFile, new { type = "file"})
-            @Html.ValidationMessageFor(model => model.UploadFile)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IncidentLocation)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IncidentLocation)
-            @Html.ValidationMessageFor(model => model.IncidentLocation)
+    
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.UploadFile)
+            </div>
+            <div class="span7">
+                @Html.TextBoxFor(model => model.UploadFile, new { type = "file"})
+                @Html.ValidationMessageFor(model => model.UploadFile)
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ActionTaken)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ActionTaken)
-            @Html.ValidationMessageFor(model => model.ActionTaken)
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.IncidentLocation)
+            </div>
+            <div class="span7">
+                @Html.EditorFor(model => model.IncidentLocation)
+                @Html.ValidationMessageFor(model => model.IncidentLocation)
+            </div>
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="row">
+            <div class="span5">
+                @Html.LabelFor(model => model.ActionTaken)
+            </div>
+            <div class="span7">
+                @Html.EditorFor(model => model.ActionTaken)
+                @Html.ValidationMessageFor(model => model.ActionTaken)
+            </div>
+        </div>
+        
+       <input type="submit" value="Create" class="btn btn-large"/>
+    
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <i class="icon-arrow-left"></i>@Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</div>
+</body>
+    </html>
