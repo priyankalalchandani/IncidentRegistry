@@ -17,9 +17,10 @@ namespace IncidentDomain.Services
             :base(repo)
         {
             this.Repository = repo;
+
         }
 
-        public string UploadFile()
+        public void UploadFile(ref Incident incident)
         {
             string filename = "";
             foreach (string upload in HttpContext.Current.Request.Files)
@@ -27,9 +28,9 @@ namespace IncidentDomain.Services
                 filename = Path.GetFileName(HttpContext.Current.Request.Files[upload].FileName);
                 string path = HttpContext.Current.Server.MapPath("~/");
                 HttpContext.Current.Request.Files[upload].SaveAs(Path.Combine(path, filename));
-                
+                incident.UploadFile = filename;
             }
-            return filename;
+            //return filename;
         }
     }
 }
