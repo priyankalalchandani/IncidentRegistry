@@ -19,8 +19,12 @@
 
 <h3>Are you sure you want to delete the following data?</h3>
 
-<table class="table">
+<table class="table table-striped table-bordered">
 
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IncidentID)</th>
+        <td>@Html.DisplayFor(model => model.IncidentID)</td>
+    </tr>
 
     <tr>
         <th>@Html.DisplayNameFor(model => model.Date)</th>
