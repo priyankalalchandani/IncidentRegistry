@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncidentRegistry", "IncidentRegistry\IncidentRegistry.csproj", "{CA41A9E2-076F-44F7-AEE3-CA7B3A56D63B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncidentDomain", "..\..\..\IncidentRegistry\IncidentRegistry\IncidentDomain\IncidentDomain.csproj", "{93DE3517-8C5A-421D-A40C-B599AF16BEA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncidentDomain", "IncidentDomain\IncidentDomain.csproj", "{93DE3517-8C5A-421D-A40C-B599AF16BEA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncidentInfrastructure", "..\..\..\IncidentRegistry\IncidentRegistry\IncidentInfrastructure\IncidentInfrastructure.csproj", "{428BE48C-9CB7-4A61-9523-B5F40403ECEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncidentInfrastructure", "IncidentInfrastructure\IncidentInfrastructure.csproj", "{428BE48C-9CB7-4A61-9523-B5F40403ECEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
