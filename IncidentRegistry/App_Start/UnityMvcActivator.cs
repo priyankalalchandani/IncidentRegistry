@@ -1,4 +1,4 @@
-using System.Linq;
+/*using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity.Mvc;
 
@@ -23,4 +23,4 @@ namespace IncidentRegistry.App_Start
             // Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(UnityPerRequestHttpModule));
         }
     }
-}
+}*/
