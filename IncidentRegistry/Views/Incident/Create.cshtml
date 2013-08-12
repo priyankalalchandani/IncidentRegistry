@@ -24,9 +24,21 @@
 
     <fieldset class="fieldset">
         <legend class="legend">Report Incident</legend>
+
         <div class="row">
             <div class="span5">
-                @Html.Label("Date & Time of Incidence") (Format for Date:yyyy/mm/dd and Time:hh:mm:ss AM/PM) 
+                @Html.Label("Incident Name") 
+            
+            </div>
+            <div class="span7">
+                @Html.EditorFor(model => model.IncidentName)
+                @Html.ValidationMessageFor(model => model.IncidentName)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span5">
+                @Html.Label("Date & Time of Incident") (Format for Date:yyyy/mm/dd and Time:hh:mm:ss AM/PM) 
             
             </div>
             <div class="span7">
