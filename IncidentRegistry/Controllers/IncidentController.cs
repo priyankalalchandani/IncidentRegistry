@@ -41,7 +41,7 @@ namespace IncidentRegistry.Controllers
         [HttpPost]
         public ActionResult CreateIncident(IncidentDomain.Entities.Incident incident)
         {
-            incident.UploadFile = incidentService.UploadFile();
+            incidentService.UploadFile(ref incident);
             if (ModelState.IsValid)
             {
                 incidentService.AddIncident(incident);
@@ -67,7 +67,7 @@ namespace IncidentRegistry.Controllers
         public ActionResult EditData(IncidentDomain.Entities.Incident incident)
         {
             
-                incidentService.UpdateIncident(incident);
+            incidentService.UpdateIncident(incident);
 
 
             return RedirectToAction("Index");

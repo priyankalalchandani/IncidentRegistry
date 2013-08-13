@@ -1,78 +1,102 @@
 ﻿@model IncidentDomain.Entities.Incident
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Incident Reporting</title>
+        
+        <link href="~/bootstrap.css" rel="stylesheet" media="screen">
+        <meta name="viewport" content="width=device-width" />
+        
+    </head>
+    <body>
+
+
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="container">
+<h2>Edit Incident</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Incident</legend>
 
         @Html.HiddenFor(model => model.IncidentID)
-
-        <div class="editor-label">
+         @Html.HiddenFor(model => model.UploadFile)
+    <div class="row">
+        <div class="span5">
             @Html.LabelFor(model => model.Date)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.Date)
             @Html.ValidationMessageFor(model => model.Date)
         </div>
-
-        <div class="editor-label">
+    </div>
+    
+    <div class="row">
+        <div class="span5">
             @Html.LabelFor(model => model.IncidentType)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.IncidentType)
             @Html.ValidationMessageFor(model => model.IncidentType)
         </div>
-
-        <div class="editor-label">
+     </div>
+    
+    <div class="row">
+        <div class="span5">
             @Html.LabelFor(model => model.Department)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.Department)
             @Html.ValidationMessageFor(model => model.Department)
         </div>
+    </div>
+    
+    <div class="row">
 
-        <div class="editor-label">
+        <div class="span5">
             @Html.LabelFor(model => model.Description)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-
-        <div class="editor-label">
+    </div>
+    
+    <div class="row">
+        <div class="span5">
             @Html.LabelFor(model => model.IncidentLocation)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.IncidentLocation)
             @Html.ValidationMessageFor(model => model.IncidentLocation)
         </div>
+    </div>
 
-        <div class="editor-label">
+    <div class="row">
+        <div class="span5">
             @Html.LabelFor(model => model.ActionTaken)
         </div>
-        <div class="editor-field">
+        <div class="span7">
             @Html.EditorFor(model => model.ActionTaken)
             @Html.ValidationMessageFor(model => model.ActionTaken)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+    </div>
+        
+            <input type="submit" value="Save" class="btn btn-large"/>
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    </div>
+</body>
+</html>

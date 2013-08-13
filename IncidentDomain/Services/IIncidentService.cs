@@ -8,6 +8,6 @@ namespace IncidentDomain.Services
 {
     public interface IIncidentService : IService<IncidentDomain.Entities.Incident>
     {
-        string UploadFile();
+        void UploadFile(ref IncidentDomain.Entities.Incident incident);
     }
 }
