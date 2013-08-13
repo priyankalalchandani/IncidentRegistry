@@ -1,61 +1,65 @@
 ﻿@model IncidentDomain.Entities.Incident
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Incident Reporting</title>
+        
+        <link href="~/bootstrap.css" rel="stylesheet" media="screen">
+        <meta name="viewport" content="width=device-width" />
+        
+    </head>
+    <body>
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container">
 
 <h3>Are you sure you want to delete the following data?</h3>
-<fieldset>
-    <legend>Incident</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Date)
-    </div>
+<table class="table table-striped table-bordered">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IncidentType)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IncidentType)
-    </div>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IncidentID)</th>
+        <td>@Html.DisplayFor(model => model.IncidentID)</td>
+    </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Department)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Department)
-    </div>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Date)</th>
+         <td>@Html.DisplayFor(model => model.Date)</td>
+    </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IncidentType)</th>
+         <td>@Html.DisplayFor(model => model.IncidentType)</td>
+    </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IncidentLocation)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IncidentLocation)
-    </div>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Department)</th>
+         <td>@Html.DisplayFor(model => model.Department)</td>
+    </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ActionTaken)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ActionTaken)
-    </div>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IncidentLocation)</th>
+         <td>@Html.DisplayFor(model => model.IncidentLocation)</td>
+    </tr>
 
-</fieldset>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ActionTaken)</th>
+         <td>@Html.DisplayFor(model => model.ActionTaken)</td>
+    </tr>
+
+    </table>
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+
+</div>
+</body>
+
+</html>
