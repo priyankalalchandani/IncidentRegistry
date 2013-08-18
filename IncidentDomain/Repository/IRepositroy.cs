@@ -13,6 +13,5 @@ namespace IncidentDomain.Repository
         T Get(int id);
         IEnumerable<T> GetAll();
         T Insert(T data);
-       
     }
 }
