@@ -12,11 +12,11 @@ namespace IncidentDomain.Services
 {
     public class IncidentService:AbstractService<IncidentDomain.Entities.Incident>,IIncidentService
     {
-        private IIncidentRepository Repository;
-        public IncidentService(IIncidentRepository repo)
-            :base(repo)
+        //private IIncidentRepository Repository;
+        public IncidentService(IIncidentRepository repo,ICommit commit)
+            :base(repo,commit)
         {
-            this.Repository = repo;
+            //  this.Repository = repo;
 
         }
 
