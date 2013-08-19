@@ -24,6 +24,8 @@ namespace IncidentRegistry
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             Mapper.Initialize();
+
+            ViewEngines.Engines.Add(new IncidentRegistry.Views.IncidentRazorViewEngine());
         }
     }
 }
