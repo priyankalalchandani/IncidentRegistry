@@ -10,14 +10,9 @@ using IncidentDomain.Entities;
 
 namespace IncidentInfrastructure.Repositories
 {
-    public class IncidentDBContext : DbContext
-    {
-        public DbSet<IncidentDomain.Entities.Incident> Incidents { get; set; }
-    }
-
     public class IncidentRepository : AbstractRepository<Incident> ,IIncidentRepository
     {
-        public IncidentRepository(IncidentDBContext context)
+        public IncidentRepository(DbContext context)
             : base(context)
         {
            
