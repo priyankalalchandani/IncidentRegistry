@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using IncidentDomain.Repository;
 using System.Data.Entity;
+using System.Collections.Concurrent;
 
 namespace IncidentInfrastructure.Repositories
 {
     
-    public class AbstractRepository<TEntity> : IRepository<TEntity> where TEntity : IncidentDomain.Entities.Incident, new()
+    public class AbstractRepository<TEntity> : IRepository<TEntity> where TEntity : IncidentDomain.Entities.Incident
     {
-        protected DbContext Context { get; set; }
-        public DbSet<TEntity> DbSet { get; set; }
+        protected DbContext Context { get; private set; }
+        
+        protected DbSet<TEntity> DbSet { get; set; }
 
         protected virtual IQueryable<TEntity> QuerySet { get { return DbSet; } }
 
@@ -35,7 +37,6 @@ namespace IncidentInfrastructure.Repositories
         public TEntity Insert(TEntity model)
         {
             DbSet.Add(model);
-            Context.SaveChanges();
             return model;
         }
 
@@ -43,7 +44,6 @@ namespace IncidentInfrastructure.Repositories
         {
             TEntity data = DbSet.Find(id);
             DbSet.Remove(data);
-            Context.SaveChanges();
             return data;
         }
 
@@ -52,7 +52,6 @@ namespace IncidentInfrastructure.Repositories
             TEntity entity = DbSet.Find(data.IncidentID);
             
             Context.Entry(entity).CurrentValues.SetValues(data);
-            Context.SaveChanges();
             return data;
         }
     }
