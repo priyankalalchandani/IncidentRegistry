@@ -10,10 +10,12 @@ namespace IncidentDomain.Services
     public class AbstractService<T> : IService<T> where T: new()
     {
         private IRepository<T> repo;
+        ICommit commitdata;
 
-        public AbstractService(IRepository<T> repo)
+        public AbstractService(IRepository<T> repo,ICommit commitdata)
         {
             this.repo = repo;
+            this.commitdata = commitdata;
         }
 
         public T GetIncidentById(int id)
@@ -29,6 +31,7 @@ namespace IncidentDomain.Services
         public T AddIncident(T model)
         {
             repo.Insert(model);
+            commitdata.Commit();
             return model;
         }
 
@@ -40,11 +43,13 @@ namespace IncidentDomain.Services
         public int DeleteIncident(int id)
         {
             repo.Delete(id);
+            commitdata.Commit();
             return id;
         }
         public T UpdateIncident(T data)
         {
             repo.Update(data);
+            commitdata.Commit();
             return data;
         }
     }
