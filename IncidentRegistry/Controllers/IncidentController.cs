@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.IO;
 using IncidentDomain.Services;
 using IncidentInfrastructure.Repositories;
+using Omu.ValueInjecter;
 
 namespace IncidentRegistry.Controllers
 {
@@ -39,12 +40,16 @@ namespace IncidentRegistry.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateIncident(IncidentDomain.Entities.Incident incident)
+        public ActionResult CreateIncident(Models.Incident.IncidentViewModel incident)
         {
-            incidentService.UploadFile(ref incident);
+            MapperClass mapper=new MapperClass();
             if (ModelState.IsValid)
             {
-                incidentService.AddIncident(incident);
+                //IncidentDomain.Entities.Incident incidententity= mapper.MapValues(incident);
+                var incidententity = new IncidentDomain.Entities.Incident();
+                incidententity.InjectFrom<FilterProp>(incident);
+                //incidentService.UploadFile(ref incidententity);
+                incidentService.AddIncident(incidententity);
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
